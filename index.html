@@ -13,5 +13,25 @@
     </head>
     <body>
       <h1>Browser Template</h1>
+
+      <div id='message'></div>
+      <div id='unathenticated'>
+
+        <form id='sign-up'>
+          <input required type="text" placeholder='User Email' name='credentials[email]'>
+          <input required type="text" placeholder="User Password" name='credentials[password]'>
+          <input required type="text" placeholder="Confirm Password" name='credentials[password_confirmation]'>
+          <button type='submit'>Sign Up</button>
+        </form>
+        <form id='sign-in'>
+          <input required type="text" placeholder='User Email' name='credentials[email]'>
+          <input required type="text" placeholder="User Password" name='credentials[password]'>
+
+          <button type='submit'>Sign In</button>
+        </form>
+      </div>
+      <div id='authenticated'>
+        <h1>Authenticated filler</h1>
+      </div>
     </body>
 </html>
