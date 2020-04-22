@@ -1,1 +1,13 @@
 @import '~bootstrap/scss/bootstrap';
+
+#authenticated {
+  display: none;
+}
+
+.failure {
+  color: red;
+}
+
+.success {
+  color: green;
+}

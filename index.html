@@ -12,7 +12,7 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>Tic-Tac-Toe</h1>
 
       <div id='message'></div>
       <div id='unauthenticated'>
@@ -32,6 +32,28 @@
       </div>
       <div id='authenticated'>
         <h1>Authenticated filler</h1>
+        <!-- change password -->
+        <form id="change-password">
+          <input required type="password" name="passwords[old]" placeholder="Old Password">
+          <input required type="password" name="passwords[new]" placeholder="New Password">
+          <button type="submit">Change Password</button>
+        </form>
+
+        <!-- sign out -->
+        <form id="sign-out">
+          <button type="submit">Sign Out</button>
+        </form>
+        <!-- start tic-tac-toe game -->
+        <form id="start-game">
+          <button type="submit">Play Tic-Tac-Toe</button>
+        </form>
+        <!-- player information -->
+        <form id="player-info">
+          <button type="submit">Player Data</button>
+        </form>
+      </div>
+      <div id='game'>
+
       </div>
     </body>
 </html>
