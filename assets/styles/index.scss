@@ -3,6 +3,14 @@
 #authenticated {
   display: none;
 }
+#game {
+  display: none;
+}
+
+.box {
+  background-color: grey;
+  border: black solid;
+}
 
 .failure {
   color: red;
