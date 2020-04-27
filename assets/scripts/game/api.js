@@ -24,7 +24,13 @@ const updateGame = function (update) {
   })
 }
 
+const leaveGame = function () {
+  console.log('leaveGame ran!')
+  return true
+}
+
 module.exports = {
   startGame,
-  updateGame
+  updateGame,
+  leaveGame
 }

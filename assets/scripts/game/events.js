@@ -50,8 +50,25 @@ const onMakeMove = function (event) {
   }
 }
 
-const onNewGame = function () {
+const onNewGame = function (event) {
+  event.preventDefault()
 
+  const form = event.target
+  const formData = getFormFields(form)
+  console.log(formData)
+  api.startGame(formData)
+    .then(ui.startNewGameSuccess)
+    .catch(ui.startNewGameFailure)
+}
+
+const onLeaveGame = function (event) {
+  event.preventDefault()
+
+  const form = event.target
+  const formData = getFormFields(form)
+  console.log(formData)
+
+  ui.leaveGameSuccess()
 }
 
 const updateBoard = function (index, value) {
@@ -65,10 +82,9 @@ const updateBoard = function (index, value) {
   }
 }
 
-
-
 module.exports = {
   onStartGame,
   onMakeMove,
-  onNewGame
+  onNewGame,
+  onLeaveGame
 }
