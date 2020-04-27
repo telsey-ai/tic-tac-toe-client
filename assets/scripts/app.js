@@ -24,4 +24,5 @@ $(() => {
   $('#6').on('click', gameEvents.onMakeMove)
   $('#7').on('click', gameEvents.onMakeMove)
   $('#8').on('click', gameEvents.onMakeMove)
+  $('#new-game').on('click', gameEvents.onNewGame)
 })

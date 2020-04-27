@@ -50,6 +50,10 @@ const onMakeMove = function (event) {
   }
 }
 
+const onNewGame = function () {
+
+}
+
 const updateBoard = function (index, value) {
   const square = '#' + index
 
@@ -65,5 +69,6 @@ const updateBoard = function (index, value) {
 
 module.exports = {
   onStartGame,
-  onMakeMove
+  onMakeMove,
+  onNewGame
 }
