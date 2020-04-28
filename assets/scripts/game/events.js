@@ -37,13 +37,17 @@ const onMakeMove = function (event) {
       value = "O"
     }
     updateBoard(event.target.id, value)
+    // ui.checkForWin()
+
+    // update.game["over"] = store.game.over
+    console.log('update for api', update)
     console.log(update)
     console.log(event)
     const form = event.target
     console.log('form: ', form)
     // const formData = getFormFields(form)
     // console.log(formData)
-
+    store.update = update
     api.updateGame(update)
       .then(ui.makeMoveSuccess)
       .catch(ui.makeMoveFailure)
@@ -82,9 +86,21 @@ const updateBoard = function (index, value) {
   }
 }
 
+const onGetStats = function (event) {
+  event.preventDefault()
+
+  const form = event.target
+  const formData = getFormFields(form)
+  console.log(formData)
+  api.getStats(formData)
+    .then(ui.getStatsSuccess)
+    .catch(ui.getStatsFailure)
+}
+
 module.exports = {
   onStartGame,
   onMakeMove,
   onNewGame,
-  onLeaveGame
+  onLeaveGame,
+  onGetStats
 }

@@ -17,7 +17,7 @@ $(() => {
   $('#sign-out').on('submit', authEvents.onSignOut)
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('#start-game').on('submit', gameEvents.onStartGame)
-
+  $('#get-stats').on('click', gameEvents.onGetStats)
   // game board events
   $('#0').on('click', gameEvents.onMakeMove)
   $('#1').on('click', gameEvents.onMakeMove)
@@ -30,6 +30,5 @@ $(() => {
   $('#8').on('click', gameEvents.onMakeMove)
   $('#new-game').on('click', gameEvents.onNewGame)
   $('#leave-game').on('click', gameEvents.onLeaveGame)
-  $('#get-stats').on('click', gameEvents.onGetStats)
-
+  $('#get-stats-game').on('click', gameEvents.onGetStats)
 })

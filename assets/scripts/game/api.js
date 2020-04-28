@@ -24,13 +24,20 @@ const updateGame = function (update) {
   })
 }
 
-const leaveGame = function () {
-  console.log('leaveGame ran!')
-  return true
+const getStats = function (data) {
+  console.log('getStats.api ran', data)
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
 }
 
 module.exports = {
   startGame,
   updateGame,
-  leaveGame
+  getStats
+
 }

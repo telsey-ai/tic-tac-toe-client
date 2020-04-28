@@ -1,4 +1,6 @@
 const store = require('../store')
+const api = require('./api')
+
 
 const startGameSuccess = function (data) {
   $('#message').text("Its X's turn!")
@@ -130,6 +132,61 @@ const leaveGameFailure = function () {
   console.log(`startGameFailure ran. Error is not knowable`)
 }
 
+const getStatsSuccess = function (data) {
+  console.log(data)
+  const gamesPlayed = data.games.length
+  let messageDisplay = 'User has played ' + gamesPlayed + ' games and won '
+  let wins = 0
+
+  for (let i = 0; i < data.games.length; i++) {
+    const board = data.games[i].cells
+    console.log(board)
+    if (board[4] === 'X') {
+      if (board[1] === 'X' && board[7] === 'X') {
+        wins++
+        console.log('1 ran')
+      } else if (board[3] === 'X' && board[5] === 'X') {
+        wins++
+        console.log('1 ran')
+      } else if (board[2] === 'X' && board[6] === 'X') {
+        wins++
+        console.log('1 ran')
+      } else if (board[0] === 'X' && board[8] === 'X') {
+        wins++
+        console.log('1 ran')
+      }
+    }
+    if (board[0] === 'X') {
+      if (board[1] === 'X' && board[2] === 'X') {
+        wins++
+        console.log('1 ran')
+      } else if (board[3] === 'X' && board[6] === 'X') {
+        wins++
+        console.log('1 ran')
+      }
+    }
+    if (board[8] === 'X') {
+      if (board[5] === 'X' && board[2] === 'X') {
+        wins++
+        console.log('1 ran')
+      } else if (board[6] === 'X' && board[7] === 'X') {
+        wins++
+        console.log('1 ran')
+      }
+    }
+  }
+
+  messageDisplay = messageDisplay + wins + ' games'
+  $('#message').text(messageDisplay)
+}
+
+const getStatsFailure = function (error) {
+  $('#message').text('get stats failed!')
+  $('#message').removeClass()
+  $('#message').addClass('failure')
+  console.log(`getStatsFailure ran. Error is:`, Error)
+}
+
 const checkForWin = function () {
   const board = store.game.cells
   if (!!board[0]) {
@@ -200,6 +257,13 @@ const checkForWin = function () {
     }
   }
   console.log('game over:', store.game.over)
+  if (store.game.over) {
+    store.update.game.over = true
+    console.log('check for win api update', store.update)
+    api.updateGame(store.update)
+      .then()
+      .catch()
+  }
 }
 
 module.exports = {
@@ -210,5 +274,8 @@ module.exports = {
   startNewGameSuccess,
   startNewGameFailure,
   leaveGameSuccess,
-  leaveGameFailure
+  leaveGameFailure,
+  getStatsSuccess,
+  getStatsFailure,
+  checkForWin
 }
