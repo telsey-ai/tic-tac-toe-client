@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic-Tac-Toe Game</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <h1>Tic-Tac-Toe</h1>
+
+      <div id='message'></div>
+      <div id='unauthenticated'>
+
+        <form id='sign-up'>
+          <input required type="text" placeholder='User Email' name='credentials[email]'>
+          <input required type="password" placeholder="User Password" name='credentials[password]'>
+          <input required type="password" placeholder="Confirm Password" name='credentials[password_confirmation]'>
+          <button type='submit'>Sign Up</button>
+        </form>
+        <form id='sign-in'>
+          <input required type="text" placeholder='User Email' name='credentials[email]'>
+          <input required type="password" placeholder="User Password" name='credentials[password]'>
+
+          <button type='submit'>Sign In</button>
+        </form>
+      </div>
+      <div id='authenticated'>
+        <h1>Authenticated filler</h1>
+        <!-- change password -->
+        <form id="change-password">
+          <input required type="password" name="passwords[old]" placeholder="Old Password">
+          <input required type="password" name="passwords[new]" placeholder="New Password">
+          <button type="submit">Change Password</button>
+        </form>
+
+        <!-- sign out -->
+        <form id="sign-out">
+          <button type="submit">Sign Out</button>
+        </form>
+        <!-- start tic-tac-toe game -->
+        <form id="start-game">
+          <button type="submit">Play Tic-Tac-Toe</button>
+        </form>
+        <!-- player information -->
+        <!-- <form id="player-info">
+          <button type="submit">Player Data</button>
+        </form> -->
+        <button id='get-stats' type="button" class="btn btn-primary">Get Stats</button>
+      </div>
+      <div id='game' class='container'>
+        <h2>I am the game board!!! Fear me!!</h2>
+        <div class='row'>
+          <div data-cell-index='0' id='0' class='col-4 box'>top left</div>
+          <div data-cell-index='1' id='1' class='col-4 box'>top mid</div>
+          <div data-cell-index='2' id='2' class='col-4 box'>top right</div>
+          <div data-cell-index='3' id='3' class='col-4 box'>mid left</div>
+          <div data-cell-index='4' id='4' class='col-4 box'>mid mid</div>
+          <div data-cell-index='5' id='5' class='col-4 box'>mid right</div>
+          <div data-cell-index='6' id='6' class='col-4 box'>bot left</div>
+          <div data-cell-index='7' id='7' class='col-4 box'>bot mid</div>
+          <div data-cell-index='8' id='8' class='col-4 box'>bot right</div>
+        </div>
+        <button id='new-game' type="button" class="btn btn-primary">New Game</button>
+        <button id='leave-game' type="button" class="btn btn-primary">Leave Game</button>
+        <button id='get-stats-game' type="button" class="btn btn-primary">Get Stats</button>
+
+      </div>
+    </body>
+</html>
