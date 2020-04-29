@@ -9,7 +9,7 @@ const onStartGame = function (event) {
 
   const form = event.target
   const formData = getFormFields(form)
-  console.log(formData)
+  // console.log(formData)
   api.startGame(formData)
     .then(ui.startGameSuccess)
     .catch(ui.startGameFailure)
@@ -26,7 +26,7 @@ const onMakeMove = function (event) {
   }
 
   if (!store.game.cells[event.target.id] && !store.game.over) {
-    console.log(!store.game.over)
+    // console.log(!store.game.over)
     update.game.cell.index = event.target.id
 
     if (store.turn % 2 === 1) {
@@ -40,13 +40,13 @@ const onMakeMove = function (event) {
     // ui.checkForWin()
 
     // update.game["over"] = store.game.over
-    console.log('update for api', update)
-    console.log(update)
-    console.log(event)
+    // console.log('update for api', update)
+    // console.log(update)
+    // console.log(event)
     const form = event.target
-    console.log('form: ', form)
+    // console.log('form: ', form)
     // const formData = getFormFields(form)
-    // console.log(formData)
+    // // console.log(formData)
     store.update = update
     api.updateGame(update)
       .then(ui.makeMoveSuccess)
@@ -59,7 +59,7 @@ const onNewGame = function (event) {
 
   const form = event.target
   const formData = getFormFields(form)
-  console.log(formData)
+  // console.log(formData)
   api.startGame(formData)
     .then(ui.startNewGameSuccess)
     .catch(ui.startNewGameFailure)
@@ -70,7 +70,7 @@ const onLeaveGame = function (event) {
 
   const form = event.target
   const formData = getFormFields(form)
-  console.log(formData)
+  // console.log(formData)
 
   ui.leaveGameSuccess()
 }
@@ -91,7 +91,7 @@ const onGetStats = function (event) {
 
   const form = event.target
   const formData = getFormFields(form)
-  console.log(formData)
+  // console.log(formData)
   api.getStats(formData)
     .then(ui.getStatsSuccess)
     .catch(ui.getStatsFailure)

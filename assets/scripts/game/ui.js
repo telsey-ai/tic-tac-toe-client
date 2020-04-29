@@ -6,13 +6,13 @@ const startGameSuccess = function (data) {
   $('#message').text("Its X's turn!")
   $('#message').removeClass()
   $('#message').addClass('success')
-  console.log(`startGameSuccess ran. Data is:`, data)
+  // console.log(`startGameSuccess ran. Data is:`, data)
 
   // "store" the user object:
   // create a key on the store object
   // hold the user object inside
   store.game = data.game
-  console.log(store.game)
+  // console.log(store.game)
   store.turn = 1
 
   // Sign in succcess!
@@ -22,6 +22,10 @@ const startGameSuccess = function (data) {
   $('#unauthenticated').hide()
   $('#game').show()
 
+  $('.col-4').removeClass('success')
+  $('.col-4').removeClass('failure')
+  $('.col-4').text('Play here?')
+
   // reset form:
   // $('form').trigger('reset')
 }
@@ -30,14 +34,14 @@ const startGameFailure = function (error) {
   $('#message').text('startGame failed!')
   $('#message').removeClass()
   $('#message').addClass('failure')
-  console.log(`startGameFailure ran. Error is:`, error)
+  // console.log(`startGameFailure ran. Error is:`, error)
 
   // reset form:
   // $('form').trigger('reset')
 }
 
 const makeMoveSuccess = function (data) {
-  console.log('data is: ', data)
+  // console.log('data is: ', data)
 
   if (++store.turn % 2 === 0) {
     $('#message').text("Its O's turn!")
@@ -47,7 +51,7 @@ const makeMoveSuccess = function (data) {
 
   $('#message').removeClass()
   $('#message').addClass('success')
-  console.log(`makeMoveSuccess ran. Data is:`, data)
+  // console.log(`makeMoveSuccess ran. Data is:`, data)
 
   // "store" the user object:
   // create a key on the store object
@@ -55,7 +59,7 @@ const makeMoveSuccess = function (data) {
   // store.game = data.game
   store.game = data.game
   checkForWin()
-  console.log('store.game: ', store.game)
+  // console.log('store.game: ', store.game)
   // store.turn++
 
   // Sign in succcess!
@@ -73,7 +77,7 @@ const makeMoveFailure = function (error) {
   $('#message').text('makeMove failed!')
   $('#message').removeClass()
   $('#message').addClass('failure')
-  console.log(`makeMoveFailure ran. Error is:`, error)
+  // console.log(`makeMoveFailure ran. Error is:`, error)
 
   // reset form:
   // $('form').trigger('reset')
@@ -89,13 +93,13 @@ const startNewGameSuccess = function (data) {
   $('.col-4').removeClass('failure')
   $('.col-4').text('Play here?')
 
-  console.log(`startGameSuccess ran. Data is:`, data)
+  // console.log(`startGameSuccess ran. Data is:`, data)
 
   // "store" the user object:
   // create a key on the store object
   // hold the user object inside
   store.game = data.game
-  console.log(store.game)
+  // console.log(store.game)
   store.turn = 1
 
   // Sign in succcess!
@@ -113,7 +117,7 @@ const startNewGameFailure = function (error) {
   $('#message').text('startGame failed!')
   $('#message').removeClass()
   $('#message').addClass('failure')
-  console.log(`startGameFailure ran. Error is:`, error)
+  // console.log(`startGameFailure ran. Error is:`, error)
 
   // reset form:
   // $('form').trigger('reset')
@@ -129,49 +133,49 @@ const leaveGameFailure = function () {
   $('#message').text('startGame failed!')
   $('#message').removeClass()
   $('#message').addClass('failure')
-  console.log(`startGameFailure ran. Error is not knowable`)
+  // console.log(`startGameFailure ran. Error is not knowable`)
 }
 
 const getStatsSuccess = function (data) {
-  console.log(data)
+  // console.log(data)
   const gamesPlayed = data.games.length
   let messageDisplay = 'User has played ' + gamesPlayed + ' games and won '
   let wins = 0
 
   for (let i = 0; i < data.games.length; i++) {
     const board = data.games[i].cells
-    console.log(board)
+    // console.log(board)
     if (board[4] === 'X') {
       if (board[1] === 'X' && board[7] === 'X') {
         wins++
-        console.log('1 ran')
+        // console.log('1 ran')
       } else if (board[3] === 'X' && board[5] === 'X') {
         wins++
-        console.log('1 ran')
+        // console.log('1 ran')
       } else if (board[2] === 'X' && board[6] === 'X') {
         wins++
-        console.log('1 ran')
+        // console.log('1 ran')
       } else if (board[0] === 'X' && board[8] === 'X') {
         wins++
-        console.log('1 ran')
+        // console.log('1 ran')
       }
     }
     if (board[0] === 'X') {
       if (board[1] === 'X' && board[2] === 'X') {
         wins++
-        console.log('1 ran')
+        // console.log('1 ran')
       } else if (board[3] === 'X' && board[6] === 'X') {
         wins++
-        console.log('1 ran')
+        // console.log('1 ran')
       }
     }
     if (board[8] === 'X') {
       if (board[5] === 'X' && board[2] === 'X') {
         wins++
-        console.log('1 ran')
+        // console.log('1 ran')
       } else if (board[6] === 'X' && board[7] === 'X') {
         wins++
-        console.log('1 ran')
+        // console.log('1 ran')
       }
     }
   }
@@ -184,7 +188,7 @@ const getStatsFailure = function (error) {
   $('#message').text('get stats failed!')
   $('#message').removeClass()
   $('#message').addClass('failure')
-  console.log(`getStatsFailure ran. Error is:`, Error)
+  // console.log(`getStatsFailure ran. Error is:`, Error)
 }
 
 const checkForWin = function () {
@@ -192,37 +196,36 @@ const checkForWin = function () {
   if (!!board[0]) {
     if ((store.game.cells[0] === store.game.cells[1]) && (store.game.cells[1] === store.game.cells[2])) {
       store.game.over = true
-      console.log(1)
+      // console.log(1)
     } else if (store.game.cells[0] === store.game.cells[3] && store.game.cells[3] === store.game.cells[6]) {
       store.game.over = true
-      console.log(4)
+      // console.log(4)
     } else if (store.game.cells[0] === store.game.cells[4] && store.game.cells[4] === store.game.cells[8]) {
       store.game.over = true
-      console.log(7)
+      // console.log(7)
     }
   }
   if (!!board[4]) {
     if (store.game.cells[3] === store.game.cells[4] && store.game.cells[4] === store.game.cells[5]) {
       store.game.over = true
-      console.log(2)
+      // console.log(2)
     } else if (store.game.cells[1] === store.game.cells[4] && store.game.cells[4] === store.game.cells[7]) {
       store.game.over = true
-      console.log(5)
+      // console.log(5)
     } else if (store.game.cells[2] === store.game.cells[4] && store.game.cells[4] === store.game.cells[6]) {
       store.game.over = true
-      console.log(8)
+      // console.log(8)
     }
   }
   if (!!board[8]) {
     if (store.game.cells[6] === store.game.cells[7] && store.game.cells[7] === store.game.cells[8]) {
       store.game.over = true
-      console.log(3)
+      // console.log(3)
     } else if (store.game.cells[2] === store.game.cells[5] && store.game.cells[5] === store.game.cells[8]) {
       store.game.over = true
-      console.log(6)
+      // console.log(6)
     }
   }
-
 
   if (store.game.over === true) {
     if (store.turn % 2 === 0) {
@@ -243,7 +246,7 @@ const checkForWin = function () {
                     if (!!board[8]) {
                       if (!store.game.over) {
                         store.game.over = true
-                        console.log('Its a Draw!')
+                        // console.log('Its a Draw!')
                         $('#message').text('Its a Draw!')
                       }
                     }
@@ -256,10 +259,10 @@ const checkForWin = function () {
       }
     }
   }
-  console.log('game over:', store.game.over)
+  // console.log('game over:', store.game.over)
   if (store.game.over) {
     store.update.game.over = true
-    console.log('check for win api update', store.update)
+    // console.log('check for win api update', store.update)
     api.updateGame(store.update)
       .then()
       .catch()

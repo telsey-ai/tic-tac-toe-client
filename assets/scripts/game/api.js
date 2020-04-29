@@ -13,7 +13,7 @@ const startGame = function () {
 }
 
 const updateGame = function (update) {
-  console.log('updateGame ran data is: ', update)
+  // console.log('updateGame ran data is: ', update)
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game.id,
     method: 'PATCH',
@@ -25,9 +25,9 @@ const updateGame = function (update) {
 }
 
 const getStats = function (data) {
-  console.log('getStats.api ran', data)
+  // console.log('getStats.api ran', data)
   return $.ajax({
-    url: config.apiUrl + '/games',
+    url: config.apiUrl + '/games ',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token

@@ -7,9 +7,9 @@ const onSignUp = function (event) {
   event.preventDefault()
 
   const form = event.target
-  // console.log(form)
+  // // console.log(form)
   const formData = getFormFields(form)
-  console.log(formData)
+  // console.log(formData)
   api.signUp(formData)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -20,7 +20,7 @@ const onSignIn = function (event) {
 
   const form = event.target
   const formData = getFormFields(form)
-  console.log(formData)
+  // console.log(formData)
   api.signIn(formData)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)

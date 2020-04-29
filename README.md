@@ -1,129 +1,68 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+# **Tic-Tac-Toe README**
 
-# browser-template
+This is a tic-tac-toe application.  You can play the live version at this address https://telsey-ai.github.io/tic-tac-toe-client/ .
 
-A template for starting front-end projects. Webpack for `require` system, build
-pipeline, and development server. Boostrap and Handlebars.js included. No
-front-end frameworks included.
+### Technologies Used
 
-## Installation
+- ajax
+- api's
+- jquery
+- javascript
+- HTML
+- CSS
+- bootstrap
+- grunt
+- github
 
-1. [Download](../../archive/master.zip) this template.
-    - **Do Not Fork And Clone**
-    - Click the "Clone or Download" button and select "Download Zip".
-1. Move to the `wdi/projects` directory, then unzip the template directory with
-    `unzip /Users/<user-name>/Downloads/browser-template-master.zip`.
-1. Rename the template directory from `browser-template-master` to
-    `<project-name>-client`.
-1. Empty [`README.md`](README.md) and fill with your own content.
-1. Replace all instances of `tic-tac-toe-client` with the name of
-    your project.
-    - You can search for all instances of text in Atom by pressing
-    `commant + shift + f` on Mac or `ctrl + shift + f` on WSL.
-1. Move into the new project and `git init`.
-1. Add all of the files in your project with the command `git add --all`.
-      - **Note: This is the only time you should run this command!**
-1. Commit all of your files with the command `git commit`.
-      - Your commit title should read `Initial commit`.
-1. Install dependencies with `npm install`.
-1. Create a new repository on [github.com](https://github.com),
-    _not GitHub Enterprise_.
-1. Name the new repository with the same name used on Step 3.
-1. Follow the instructions on your new repository's setup page. For details on
-   how to push to Github, refer to the section on Github entitled "…or push an existing
-   repository from the command line." Further documentation can be found [here](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
+### Planning and development
+Prior to beggining this project I created the wireframes and user stories.
 
-## Structure
+I started coding this project by creating a landing page view for unauthorized users and completed event hanlders that would call api authorization functions e.g. sign up, sign in, change password.  I made these communicate with the user through UI updates to the page view.
 
-### Scripts
+After completing the authorization functionality I developed the game board.  I then created event listeners and handlers for each individual board square.
 
-Developers should store JavaScript files in [`assets/scripts`](assets/scripts).
-The "manifest" or entry-point is
-[`assets/scripts/app.js`](assets/scripts/app.js). In general, only
-application initialization goes in this file. It's normal for developers to
-start putting all code in this file, but encourage them to break out different
-responsibilities and use the `require` syntax put references where they're
-needed.
+When a square is clicked an event is ran which checks if the space is a valid play.  If it is then it runs an api call to update the server on the game state.
 
-### Config
+One issue i ran into while developing was that I was making the api call to update the board before the client side game logic was running.  This meant that when the api call went out it hadn't yet updated the "over" key to true that was sent to the server.
 
-Developers should set `apiUrls.production` and `apiUrls.development` in
-[`assets/scripts/config.js`](assets/scripts/config.js).  With
-`apiUrls` set, developers may rely on `apiUrl` as the base for API
-URLs.
+I solved this by sending an additional api call after the game logic detects that the game is over.  I believe it would be better to refactor the code so that the client side game logic runs first and updates its information then sends the api call.
 
-### Styles
+### Unsolved problems
 
-Developers should store styles in [`assets/styles`](assets/styles) and load them
-from [`assets/styles/index.scss`](assets/styles/index.scss). Bootstrap version 3 is
-included in this template.
+- Currently there is an issue where if you play a game of tic-tac-toe then leave the game and go back to play tic-tac-toe the board still has the html and css from the last play but the JavaScript representation of the board has been reset.  So it looks like there are already peices on the board but you can play over them and get some weird ui elements.
 
-### Forms and Using `getFormFields`
+### wireframes and user stories
 
-Developers should use [getFormFields](get-form-fields.md) to retrieve form data
-to send to an API.
+Wireframe link https://git.generalassemb.ly/telsey/project-planning-wireframes-study/blob/response/project_1_wireframes/tickTacToeWireFrame.jpeg
 
-### Deployment
+Version 1
 
-To deploy a browser-template based SPA, run `grunt deploy`.
+- As an unregistered user I want to be able to sign up with email, pw, and pw confirmation
+- As an registered user I want to be able to sign in with email and pw
+- As a signed in user I want to be able to change my password
+- As a signed in user I want to be able to sign out
+- As a signed in user I want to start a new tic tac toe game
+- As a signed in user playing tic tac toe, I want to be able to start as X
+- As a signed in user playing tic tac toe, I want to rotate turns between X and O
+- As a signed in user playing tic tac toe, I want to be able to add my token (x or o) to the spot I select
+- As a signed in user playing tic tac toe, I want to add tokens only to valid spaces (not steal spaces)
+- As a signed in user playing tic tac toe, I want to be able to see winner or tie
+- As a signed in user playing tic tac toe, I want to stop playing once game is over (no adding more tokens)
+- As a signed in user playing tic tac toe, I want to be able to play again
+- As a signed in user, I want to be able to see how many games Ive played
 
-## Adding Images
+Version 2
 
-To add images to your project, you must store them in the `public` directory.
-To use the image in HTML or CSS, write the path to the image like this:
+style
+models
+design
+images
+Version 3
 
-```html
-<img src="public/cat.jpg">
-```
-or
-```css
-#my-cool-div {
-  background-image: url('public/cat.jpg')
-}
-```
+?
 
-Note that there's no `./` or `/` in front of `public/filename.jpg`.
+Stretch Goals
 
-## Adding Fonts
-
-To add custom fonts to your app, you can either use a CDN like Google Fonts, or
-you can download the fonts and save them in the `public` directory. If you use
-the former method, follow the directions on the website providing the fonts.
-
-For local fonts, put the files in `public`, and then import and use them in a
-`.scss` file like this:
-
-```scss
-@font-face {
-  font-family: 'Nature Beauty';
-  src: url('public/Nature-Beauty.ttf') format('truetype');
-}
-
-.element-with-custom-font {
-  font-family: 'Nature Beauty';
-}
-```
-
-## Tasks
-
-Developers should run these often!
-
-- `grunt nag` or just `grunt`: runs code quality analysis tools on your code
-    and complains
-- `grunt make-standard`: reformats all your code in the JavaScript Standard Style
-- `grunt <server|serve|s>`: generates bundles, watches, and livereloads
-- `grunt build`: place bundled styles and scripts where `index.html` can find
-    them
-- `grunt deploy`: builds and deploys master branch
-
-
-## Additional Resources
-
-- [Modern Javascript Explained for Dinosaurs](https://medium.com/@peterxjang/modern-javascript-explained-for-dinosaurs-f695e9747b70)
-- [Making Sense of Front End Build Tools](https://medium.freecodecamp.org/making-sense-of-front-end-build-tools-3a1b3a87043b)
-
-## [License](LICENSE)
-
-1. All content is licensed under a CC­BY­NC­SA 4.0 license.
-1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+- As a hardcore gamer i want the program to be responsive and quick so i can grind wins.
+- As an investor i want their to be skins purchasable through microtransactions so i can get the best ROI on my investment.
+- As an art lover i want the game to be visually stimulating so i can play for hours.

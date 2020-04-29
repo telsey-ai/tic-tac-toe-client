@@ -10,7 +10,7 @@ const signUp = function (data) {
 }
 
 const signIn = function (data) {
-  console.log('signIn ran data is:', data)
+  // console.log('signIn ran data is:', data)
   return $.ajax({
     url: config.apiUrl + '/sign-in',
     method: 'POST',
@@ -29,7 +29,7 @@ const signOut = function () {
 }
 
 const changePassword = function (data) {
-  console.log(store.user)
+  // console.log(store.user)
   return $.ajax({
     url: config.apiUrl + '/change-password',
     method: 'PATCH',
